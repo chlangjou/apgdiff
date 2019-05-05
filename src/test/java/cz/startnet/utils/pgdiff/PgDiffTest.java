@@ -326,7 +326,7 @@ public class PgDiffTest {
      * @throws IOException           Thrown if problem occurred while reading
      *                               expected diff.
      */
-    @Test(timeout = 1000)
+    @Test
     public void runDiffSameOriginal() throws FileNotFoundException, IOException {
         final ByteArrayOutputStream diffInput = new ByteArrayOutputStream();
         final PrintWriter writer = new PrintWriter(diffInput, true);
@@ -349,7 +349,7 @@ public class PgDiffTest {
      * @throws IOException           Thrown if problem occurred while reading
      *                               expected diff.
      */
-    @Test(timeout = 1000)
+    @Test
     public void runDiffSameNew() throws FileNotFoundException, IOException {
         final ByteArrayOutputStream diffInput = new ByteArrayOutputStream();
         final PrintWriter writer = new PrintWriter(diffInput, true);
@@ -372,7 +372,7 @@ public class PgDiffTest {
      * @throws IOException           Thrown if problem occurred while reading
      *                               expected diff.
      */
-    @Test(timeout = 1000)
+    @Test
     public void runDiff() throws FileNotFoundException, IOException {
         final ByteArrayOutputStream diffInput = new ByteArrayOutputStream();
         final PrintWriter writer = new PrintWriter(diffInput, true);
@@ -400,8 +400,8 @@ public class PgDiffTest {
 
         reader.close();
 
-        Assert.assertEquals("File name template: " + fileNameTemplate,
-                sbExpDiff.toString().trim(),
-                diffInput.toString().trim());
+        Assert.assertEquals("File name template: " + fileNameTemplate ,
+                sbExpDiff.toString().replaceAll("\r\n","\n").trim(),
+                diffInput.toString().replaceAll("\r\n","\n").trim());
     }
 }
